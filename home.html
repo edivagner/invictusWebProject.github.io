@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- google fonts -->
+<!--    I used google photos to define a particular font style in the page title.-->
+<!--    This option depends on the link between the site and the specific font,-->
+<!--    then with a css code we direct the font to the specific field.-->
+
+<!--    Here it was used in the name of the page <span class="name2">Invictus Wine</span> and in-->
+<!--    <h1 class="name">Shopping List</h1> with the css for the classes only with the -->
+<!--    difference in the size of the source-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Water+Brush&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <!-- link file CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+
+    <script>
+        // Function for validating the login form checks the values entered in the User
+        // and Pass fields, then checks if the fields are not empty or filled in incorrectly.
+        function ValidateForm() {
+            let uservalid = document.myForm.userEmail.value;
+            let userpass = document.myForm.UserPassword.value;
+            if (uservalid === "") {
+                alert("Please provide your Email ID");
+                document.myForm.userEmail.focus()
+                return false
+            } else if (userpass === "") {
+                alert("Please provide your Password");
+                document.myForm.UserPassword.focus()
+                return false
+            } else if (uservalid != "qwe@qwe.com" || userpass != "123") {
+                alert("Incorrect User name or password");
+                document.myForm.userEmail.focus()
+                return false
+            } else {
+                document.getElementById("btncheckout").disabled = false;
+                document.getElementById("btnReset").disabled = false;
+            }
+
+        }
+        //function to clear user credentials and also disable the checkout button
+        function resetForm() {
+            document.getElementById("btnReset").disabled = true;
+            document.getElementById("btncheckout").disabled = true;
+            let frmMain = document.forms[0];
+            frmMain.reset();
+        }
+
+        //function that starts the site with the checkout button disabled before entering the credentials.
+        window.onload = function () {
+            let btnReset = document.getElementById("btnReset");
+            document.getElementById("btncheckout").disabled = true;
+            btnReset.onclick = resetForm;
+        }
+
+    </script>
+
+    <title>Invictus Wine</title>
+</head>
+<body>
+
+<!--<?php include 'login.php';?>-->
+
+
+<!-- carousel Bootstrap Image from Porto-PT -->
+<!-- This code block was used for the carousel with photos of the -->
+<!-- city of Porto and wine cellars taken from the internet and cut out in 1500x300px format. -->
+<!-- class="d-block w-100" - This class defines that the images are shown in 100% of the screen -->
+<!-- and they readjust their size for different screen sizes. -->
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+                aria-label="Slide 1" aria-current="true"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"
+                class=""></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"
+                class=""></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"
+                class=""></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"
+                class=""></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"
+                class=""></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="3000">
+            <img id="caImg0" class="d-block w-100" src="img\porto1.jpg" alt="First Image">
+            <div class="carousel-caption d-md-block">
+                <h5>First Image</h5>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img id="caImg1" class="d-block w-100" src="img\porto2.jpg" alt="Second Image">
+            <div class="carousel-caption d-md-block">
+                <h5>Second Image</h5>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img id="caImg2" class="d-block w-100" src="img\porto3.jpg" alt="Third Image">
+            <div class="carousel-caption d-md-block">
+                <h5>Third Image</h5>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img id="caImg3" class="d-block w-100" src="img\porto4.jpg" alt="Fourth Image">
+            <div class="carousel-caption d-md-block">
+                <h5>Fourth Image</h5>
+            </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="3000">
+            <img id="caImg4" class="d-block w-100" src="img\porto5.jpg" alt="Fifth Image">
+            <div class="carousel-caption d-md-block">
+                <h5>Fifth Image</h5>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="3000">
+            <img id="caImg5" class="d-block w-100" src="img\porto6.jpg" alt="Sixth Image">
+            <div class="carousel-caption d-md-block">
+                <h5>Sixth Image</h5>
+            </div>
+        </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+<!-- End Code Block -->
+
+
+<!-- Bootstrap 5 Sidebar - https://dev.to/codeply/bootstrap-5-sidebar-examples-38pb -->
+<div class="container-fluid container-fluid-nav">
+
+    <div class="row flex-nowrap">
+        <div class="col-md-3 bg-light ">
+
+            <div class="col-md-12 sticky-top ">
+                <div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col text-centre">
+                                <span class="name2">Invictus Wine</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <img src="img\logo.png" width="70" class=" align-bottom" alt="Invictus Wine">
+                            </div>
+                            <div class="col font-italic">
+                                <br>
+                                <p class="text-center">Enjoying wine is one of the simplest things in the world: open,
+                                    pour, sip, and enjoy.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ################################################################################################-->
+
+                <section class="container content-section">
+                    <h1 class="name">Shopping List</h1>
+
+                    <div class="section bottombar padding-16"></div>
+                    <div class="shopItemRow row border-top  border-bottom">
+                        <div class="col shopItemRow "><span class="shop-item shop-header shop-column">Cellar</span>
+                        </div>
+                        <div class="col shopItemRow"><span class="shop-price shop-header shop-column">Name</span></div>
+                        <div class="col shopItemRow "><span
+                                class="shop-quantity shop-header shop-column">Price</span></div>
+                        <div class="col shopItemRow"><span
+                                class="shop-quantity shop-header shop-column">Quantity</span></div>
+                        <div class="col shopItemRow ">Remove</div>
+                    </div>
+                    <div class="shopItemList">
+                    </div>
+                    <div class="row credentials border-top  border-bottom">
+                        <div class="col">
+                            <div class="container ">
+
+                                <!-- login form ####################################################-->
+
+                                <form id="formID" name="myForm" onsubmit="ValidateForm();return false">
+
+                                    <input class="form-control-sm" type="email" id="t1" name="userEmail"
+                                           placeholder="Email">
+                                    <input class="form-control-sm" type="password" id="t2" name="UserPassword"
+                                           placeholder="Password">
+                                    <button class="btn btn-primary" type="submit" id="btnLogin">Login</button>
+                                    <button class="btn btn-primary" type="submit" id="btnReset">Reset</button>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="shop-total">
+                                <strong class="shop-total-title">Total</strong>
+                                <span class="shop-total-price">€ 0</span>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-checkout" id="btncheckout"
+                                    data-bs-toggle="modal" data-bs-target="#paymentModal"
+                                    title="Please enter your credential to complete the purchase.">Checkout
+                            </button>
+
+                        </div>
+                    </div>
+                    <p>Please enter your credential to complete the purchase.</p>
+                </section>
+            </div>
+        </div>
+        <div class="col py-3">
+
+
+            <!--using offset-->
+            <!-- With the bootstrap class we create a grid with an interval between each "div". -->
+            <!-- for this, adding a “div” with padding between two “div” tags provides spacing between the “div”. -->
+
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-md-5 border-top  border-bottom offset-sm-1 grid_Product" id="1">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image1" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description1"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody class="shop-item">
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar1"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category1"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name1"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price1"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5 border-top  border-bottom  offset-sm-1 grid_Product" id="2">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image2" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description2"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar2"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category2"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name2"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price2"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 border-top  border-bottom offset-sm-1 grid_Product" id="3">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image3" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description3"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody class="shop-item">
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar3"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category3"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name3"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price3"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5 border-top  border-bottom  offset-sm-1 grid_Product" id="4">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image4" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description4"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar4"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category4"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name4"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price4"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 border-top  border-bottom offset-sm-1 grid_Product" id="5">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image5" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description5"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody class="shop-item">
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar5"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category5"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name5"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price5"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5 border-top  border-bottom  offset-sm-1 grid_Product" id="6">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image6" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description6"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar6"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category6"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name6"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price6"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-5 border-top  border-bottom offset-sm-1 grid_Product" id="7">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image7" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description7"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody class="shop-item">
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar7"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category7"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name7"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price7"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-5 border-top  border-bottom  offset-sm-1 grid_Product" id="8">
+
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img class="imgWine" id="product-image8" height="300">
+                                </div>
+                                <div class="col-sm font-italic">
+                                    <br><br>
+                                    <span id="product-description8"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <table class="table table-sm text-capitalize">
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Cellar:</th>
+                                        <td><span class="Pcellar" id="product-cellar8"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Category:</th>
+                                        <td><span class="Pcategory" id="product-category8"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Name:</th>
+                                        <td><span class="Pname" id="product-name8"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Price:</th>
+                                        <td>€ <span class="Pprice" id="product-price8"></span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm">
+                                    <button class="btn btn-primary shop-item-button" type="button">Add to List
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+    <!-- Section: Social media -->
+    <section
+            class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+    >
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+            <span>Get connected with us on social networks:</span>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+            <img src="img/media.png" height="35"/>
+        </div>
+        <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3"></i>Invictus Wine
+                    </h6>
+                    <p>Porto was originally named ‘Cidade Invicta’ which means the unbeaten city!
+                        Port wine, one of Portugal's most famous exports, is named after Porto, since the metropolitan
+                        area, and in particular the cellars of Vila Nova de Gaia.
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Products
+                    </h6>
+                    <p>
+                        <a href="https://calem.pt/en/" class="text-reset">Calem</a>
+                    </p>
+                    <p>
+                        <a href="https://www.grahams-port.com/" class="text-reset">Grahams</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Useful links
+                    </h6>
+                    <p>
+                        <a href="https://www.synopsis.pt/blog/blog/2021/10/13/porto-the-undefeated-city"
+                           class="text-reset">Porto city</a>
+                    </p>
+                    <p>
+                        <a href="https://en.wikipedia.org/wiki/Port_wine" class="text-reset">Port Wine</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Contact
+                    </h6>
+                    <p><i class="fas fa-home me-3"></i> Dublin, Ie</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        G00411275@gmit.ie
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="#!">ESR</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+<!-- Modal Payment-->
+<div class="modal fade paymentModal" id="paymentModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Payment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="mb-3">Billing address</h4>
+                            <form class="needs-validation" novalidate="">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="firstName">First name</label>
+                                        <input type="text" class="form-control" id="firstName" placeholder="" value=""
+                                               required="">
+                                        <div class="invalid-feedback"> Valid first name is required.</div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="lastName">Last name</label>
+                                        <input type="text" class="form-control" id="lastName" placeholder="" value=""
+                                               required="">
+                                        <div class="invalid-feedback"> Valid last name is required.</div>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="address">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="1234 Main St"
+                                           required="">
+                                    <div class="invalid-feedback"> Please enter your shipping address.</div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+                                    <input type="text" class="form-control" id="address2" placeholder="Apartment">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 mb-3">
+                                        <label for="country">Country</label>
+                                        <select class="form-select d-block w-100" id="country" required="">
+                                            <option value="">Choose...</option>
+                                            <option>Ireland</option>
+                                            <option>Northern Ireland</option>
+                                            <option>United Kingdom</option>
+                                        </select>
+                                        <div class="invalid-feedback"> Please select a valid country.</div>
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label for="state">County</label>
+                                        <select class="form-select d-block w-100" id="state" required="">
+                                            <option value="">Choose...</option>
+                                            <option>Galway</option>
+                                            <option>Cork</option>
+                                            <option>Dublin</option>
+                                        </select>
+                                        <div class="invalid-feedback"> Please provide a valid state.</div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="zip">Zip</label>
+                                        <input type="text" class="form-control" id="zip" placeholder="" required="">
+                                        <div class="invalid-feedback"> Zip code required.</div>
+                                    </div>
+                                </div>
+
+                                <h4 class="mb-3">Payment</h4>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="col">
+                                                <label for="cc-name">Name on card</label>
+                                                <input type="text" class="form-control" id="cc-name" placeholder=""
+                                                       required="">
+                                                <div class="invalid-feedback"> Name on card is required</div>
+                                                <label for="cc-number">Credit card number</label>
+                                                <input type="text" class="form-control" id="cc-number" placeholder=""
+                                                       required="">
+                                                <div class="invalid-feedback"> Credit card number is required</div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <label for="cc-expiration">Expiration</label>
+                                                    <input type="text" class="form-control" id="cc-expiration"
+                                                           placeholder="" required="">
+                                                    <div class="invalid-feedback"> Expiration date required</div>
+                                                </div>
+                                                <div class="col">
+                                                    <label for="cc-cvv">CVV</label>
+                                                    <input type="text" class="form-control" id="cc-cvv" placeholder=""
+                                                           required="">
+                                                    <div class="invalid-feedback"> Security code required</div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col">
+                                            <div class="card text-bg-success mb-3">
+                                                <span>You have to pay</span>
+                                                <div class="d-flex flex-row align-items-end mb-3">
+                                                    <h1 class="mb-0 yellow shop-total-price-pay">€ 0</h1>
+                                                    <span>.00</span>
+                                                </div>
+                                                <span>A great wine experience goes beyond the bottle itself. Enjoy all the flavors and pleasures at home with Invictus Wine</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="mb-4">
+                                <button class="btn btn-success btn-lg btn-block" type="submit" id="paynow">Pay Now
+                                </button>
+                                <b></b>
+                                <button type="button" class="btn btn-secondary btn-lg btn-block"
+                                        data-bs-dismiss="modal">Cancel
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="productDB"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+        crossorigin="anonymous"></script>
+
+
+</body>
+</html>
+
+<script>
+
+    // ****************   carousel
+    //The shuffle function generates a random array with the name of the images
+    // that are in the carousel so that the initial image of the carousel is different when reloaded.
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    let array = [
+        "porto1.jpg",
+        "porto2.jpg",
+        "porto3.jpg",
+        "porto4.jpg",
+        "porto5.jpg",
+        "porto6.jpg"
+    ];
+    shuffle(array);
+    let k = 4;
+    for (let i = 0; i < k; ++i) {
+        document.getElementById("caImg" + i).src = "img/" + array[i];
+    }
+
+    //This function manages the payment form in the modal.
+    // Once the payment modal is activated, the function runs in a loop checking if all fields are filled.
+    // When you click on the "pay now" button and everything is valid,
+    // execute a function to clear the shopping list and the credentials
+
+    (function () {
+        'use strict'
+        window.addEventListener('load', function () {
+
+            let forms = document.getElementsByClassName('needs-validation')
+            // Loop over them and prevent submission
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    } else {
+
+                        let cartItems = document.getElementsByClassName('shopItemList')[0]
+                        while (cartItems.hasChildNodes()) {
+                            cartItems.removeChild(cartItems.firstChild)
+                        }
+                        updateCartTotal();
+                        resetForm();
+
+                    }
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        }, false)
+    }())
+
+
+    // Function to get product information from the database and send it to the html page
+    document.getElementById('productDB').innerHTML = loadText();
+
+    // In the loadText function I used XMLHttpRequest Object to fetch the information of the products in the database,
+    // which returns a JSON object that later in a for loop is distributed by the page seducing the ID of the elements.
+
+    function loadText() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'products.php', true);
+        xhr.onload = function () {
+            if (this.status === 200) {
+                let productDB = JSON.parse(this.responseText);
+
+                for (let i in productDB) {
+                    document.getElementById('product-cellar' + productDB[i].Product_ID).innerHTML += productDB[i].ProductCellar;
+                    document.getElementById('product-category' + productDB[i].Product_ID).innerHTML += productDB[i].ProductCategory;
+                    document.getElementById('product-name' + productDB[i].Product_ID).innerHTML += productDB[i].ProductName;
+                    document.getElementById('product-price' + productDB[i].Product_ID).innerHTML += productDB[i].ProductPrice;
+                    document.getElementById('product-image' + productDB[i].Product_ID).src = productDB[i].ProductImage;
+                    document.getElementById('product-description' + productDB[i].Product_ID).innerHTML += productDB[i].ProductDescription;
+                }
+            }
+        }
+        xhr.send();
+    }
+
+    //##################################################################################################################
+    // This block was taken from the reference: https://github.com/AislingBoner/ArtShopExampleWebpage
+    // This code block has been modified to manage the shopping list
+   // to ensure the operation of each function I did the debug via console ( console.log("ok 1") )
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', ready)
+    } else {
+        ready()
+    }
+    // This function checks the status of each of the buttons, the quantity of products
+    // and the removal of items from the shopping list
+    function ready() {
+        let removeCartItemButtons = document.getElementsByClassName('btn-danger')
+        for (let i = 0; i < removeCartItemButtons.length; i++) {
+            let button = removeCartItemButtons[i]
+            button.addEventListener('click', removeCartItem)
+        }
+
+        let quantityInputs = document.getElementsByClassName('shop-quantity-input')
+        for (let i = 0; i < quantityInputs.length; i++) {
+            let input = quantityInputs[i]
+            input.addEventListener('change', quantityChanged)
+        }
+
+        let addToCartButtons = document.getElementsByClassName('shop-item-button')
+        for (let i = 0; i < addToCartButtons.length; i++) {
+            let button = addToCartButtons[i]
+            button.addEventListener('click', addToCartClicked)
+        }
+
+        document.getElementsByClassName('btn-checkout')[0].addEventListener('click', checkoutClicked)
+    }
+
+    // When the checkout button is pressed, the list update is frozen
+    function checkoutClicked() {
+        document.getElementById('formID').style.display = 'block';
+    }
+
+//Function to remove items from the shopping list and call the function to update the total amount.
+    function removeCartItem(event) {
+        console.log("ok 1")
+        let buttonClicked = event.target
+        console.log("ok 2")
+        buttonClicked.parentElement.parentElement.parentElement.remove()
+        console.log("ok 3")
+        updateCartTotal()
+        console.log("ok 4")
+    }
+
+    // Updates the quantity of products and updates the total value
+    function quantityChanged(event) {
+        let input = event.target
+        if (isNaN(input.value) || input.value <= 0) {
+            input.value = 1
+        }
+        updateCartTotal()
+    }
+
+    // Function to get product information and add it to the shopping list when the add product button is pressed
+    function addToCartClicked(event) {
+        let button = event.target
+        let shopItem = button.parentElement.parentElement
+        let name = shopItem.getElementsByClassName('Pname')[0].innerText
+        let price = shopItem.getElementsByClassName('Pprice')[0].innerText
+        let cellar = shopItem.getElementsByClassName('Pcellar')[0].innerText
+        addItemToCart(name, price, cellar)
+        updateCartTotal()
+    }
+
+ // Function to generate the shopping list with the div and html code
+    function addItemToCart(name, price, cellar) {
+        let cartRow = document.createElement('div')
+        cartRow.classList.add('shopItemRow')
+        let cartItems = document.getElementsByClassName('shopItemList')[0]
+
+
+        let cartRowContents = `
+            <div class="shop-item shop-column  border-bottom row">
+            <div class="col "><span class="shop-item-title">${cellar}</span></div>
+            <div class="col "><span class="shop-item-title">${name}</span></div>
+            <div class="col shop-price ">€ <span class="shop-column">${price}</span></div>
+            <div class="col shop-quantity"><input class="shop-quantity-input" type="number" value="1"></div>
+            <div class="col "><button class="btn btn-danger" type="button">X</button></div>
+        </div>`
+        cartRow.innerHTML = cartRowContents
+        cartItems.append(cartRow)
+        cartRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeCartItem)
+        cartRow.getElementsByClassName('shop-quantity-input')[0].addEventListener('change', quantityChanged)
+
+    }
+
+    //Function to calculate the total value of the shopping list and update the value on the page.
+    function updateCartTotal() {
+        console.log("ok 6")
+        let cartItemContainer = document.getElementsByClassName('shopItemList')[0]
+        console.log("ok 7")
+        let cartRows = cartItemContainer.getElementsByClassName('shopItemRow')
+        console.log(cartRows)
+        console.log("ok 8")
+        let total = 0
+        console.log(total, "ok 9")
+        for (let i = 0; i < cartRows.length; i++) {
+            console.log("ok a")
+            let cartRow = cartRows[i]
+            console.log("ok b")
+            let priceElement = cartRow.getElementsByClassName('shop-price')[0]
+            console.log(priceElement, "ok c")
+            let quantityElement = cartRow.getElementsByClassName('shop-quantity-input')[0]
+            console.log(quantityElement, "ok d")
+            let price = parseFloat(priceElement.innerText.replace('€ ', ''))
+            console.log(price, "ok e")
+            let quantity = quantityElement.value
+            console.log(quantity, "ok f")
+            total = total + (price * quantity)
+            console.log("ok g")
+            console.log(total, i)
+        }
+        console.log(total, "ok 10")
+        total = Math.round(total * 100) / 100
+        document.getElementsByClassName('shop-total-price')[0].innerText = '€ ' + total
+        document.getElementsByClassName('shop-total-price-pay')[0].innerText = '€ ' + total
+    }
+
+
+</script>
+
+</body>
+</html>

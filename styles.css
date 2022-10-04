@@ -1,0 +1,52 @@
+/* Modify the page title font using google fonts */
+.name {
+    font-size: 50px;
+    font-family: 'Water Brush', cursive;
+    vertical-align: bottom;
+    horiz-align: center;
+}
+/* Modify the page title font using google fonts */
+.name2 {
+    font-size: 130px;
+    font-family: 'Water Brush', cursive;
+    vertical-align: bottom;
+    horiz-align: center;
+}
+/* space between the div of the product grid */
+.grid_Product {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/*sets the margin for the login form and shopping list area*/
+.credentials{
+    margin-top: 50px;
+}
+
+/*formats the margin and border of wine bottle images*/
+.imgWine {
+    margin-bottom: 50px;
+    border-radius: 20px;
+}
+
+/*This function ensures that the sidebar is always visible on the page*/
+#lateralBar{
+    position: sticky;
+}
+
+/*Format the quantity button in the shopping list*/
+.shop-quantity-input {
+    height: 35px;
+    width: 50px;
+    border-radius: 5px;
+}
+/*Format add to purchase button*/
+.shop-item-button {
+    border-radius: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+/*Change the color of the purchase amount to yellow in the payment form modal*/
+.yellow{
+    color: #fdcc49;
+}
