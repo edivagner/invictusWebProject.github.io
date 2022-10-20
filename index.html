@@ -25,48 +25,6 @@
     <!-- link file CSS -->
     <link rel="stylesheet" href="styles.css">
 
-
-    <script>
-        // Function for validating the login form checks the values entered in the User
-        // and Pass fields, then checks if the fields are not empty or filled in incorrectly.
-        function ValidateForm() {
-            let uservalid = document.myForm.userEmail.value;
-            let userpass = document.myForm.UserPassword.value;
-            if (uservalid === "") {
-                alert("Please provide your Email ID");
-                document.myForm.userEmail.focus()
-                return false
-            } else if (userpass === "") {
-                alert("Please provide your Password");
-                document.myForm.UserPassword.focus()
-                return false
-            } else if (uservalid != "qwe@qwe.com" || userpass != "123") {
-                alert("Incorrect User name or password");
-                document.myForm.userEmail.focus()
-                return false
-            } else {
-                document.getElementById("btncheckout").disabled = false;
-                document.getElementById("btnReset").disabled = false;
-            }
-
-        }
-        //function to clear user credentials and also disable the checkout button
-        function resetForm() {
-            document.getElementById("btnReset").disabled = true;
-            document.getElementById("btncheckout").disabled = true;
-            let frmMain = document.forms[0];
-            frmMain.reset();
-        }
-
-        //function that starts the site with the checkout button disabled before entering the credentials.
-        window.onload = function () {
-            let btnReset = document.getElementById("btnReset");
-            document.getElementById("btncheckout").disabled = true;
-            btnReset.onclick = resetForm;
-        }
-
-    </script>
-
     <title>Invictus Wine</title>
 </head>
 <body>
@@ -203,9 +161,11 @@
                                 <form id="formID" name="myForm" onsubmit="ValidateForm();return false">
 
                                     <input class="form-control-sm" type="email" id="t1" name="userEmail"
-                                           placeholder="Email">
+                                           placeholder="Email" data-bs-toggle="tooltip"  data-bs-placement="top"
+                                           title="email test: qwe@qwe.com">
                                     <input class="form-control-sm" type="password" id="t2" name="UserPassword"
-                                           placeholder="Password">
+                                           placeholder="Password" data-bs-toggle="tooltip"  data-bs-placement="top"
+                                           title="Password test: 123">
                                     <button class="btn btn-primary" type="submit" id="btnLogin">Login</button>
                                     <button class="btn btn-primary" type="submit" id="btnReset">Reset</button>
 
@@ -834,6 +794,45 @@
 
 <script>
 
+    // Function for validating the login form checks the values entered in the User
+    // and Pass fields, then checks if the fields are not empty or filled in incorrectly.
+    function ValidateForm() {
+        let uservalid = document.myForm.userEmail.value;
+        let userpass = document.myForm.UserPassword.value;
+        if (uservalid === "") {
+            alert("Please provide your Email ID");
+            document.myForm.userEmail.focus()
+            return false
+        } else if (userpass === "") {
+            alert("Please provide your Password");
+            document.myForm.UserPassword.focus()
+            return false
+        } else if (uservalid != "qwe@qwe.com" || userpass != "123") {
+            alert("Incorrect User name or password");
+            document.myForm.userEmail.focus()
+            return false
+        } else {
+            document.getElementById("btncheckout").disabled = false;
+            document.getElementById("btnReset").disabled = false;
+        }
+
+    }
+    //function to clear user credentials and also disable the checkout button
+    function resetForm() {
+        document.getElementById("btnReset").disabled = true;
+        document.getElementById("btncheckout").disabled = true;
+        let frmMain = document.forms[0];
+        frmMain.reset();
+    }
+
+    //function that starts the site with the checkout button disabled before entering the credentials.
+    window.onload = function () {
+        let btnReset = document.getElementById("btnReset");
+        document.getElementById("btncheckout").disabled = true;
+        btnReset.onclick = resetForm;
+    }
+
+
     // ****************   carousel
     //The shuffle function generates a random array with the name of the images
     // that are in the carousel so that the initial image of the carousel is different when reloaded.
@@ -898,10 +897,13 @@
 
     function loadText() {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', 'products.php', true);
+        //     xhr.open('GET', 'products.php', true);
+        xhr.open('GET', 'prodWine.json', true);
+        // console.log(xhr);
         xhr.onload = function () {
             if (this.status === 200) {
                 let productDB = JSON.parse(this.responseText);
+                console.log(productDB);
 
                 for (let i in productDB) {
                     document.getElementById('product-cellar' + productDB[i].Product_ID).innerHTML += productDB[i].ProductCellar;
@@ -914,6 +916,7 @@
             }
         }
         xhr.send();
+
     }
 
     //##################################################################################################################

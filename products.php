@@ -4,7 +4,7 @@
 //Make a query of the details of the products to compose the page.
 
 // Create Connection
-$conn = mysqli_connect('localhost', 'root', '', 'g00411275');
+$conn = mysqli_connect('localhost', 'root', '', 'g00411275X');
 
 $query = 'SELECT * FROM productinfo';
 
