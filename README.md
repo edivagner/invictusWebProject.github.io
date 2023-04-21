@@ -19,3 +19,4 @@ The function uses a DOM query to validate the login form, checks the values ente
 If you press the login button with the field empty, it returns an alert telling you to fill in the field, and "document.myForm.userEmail.focus()" redirects the cursor to the empty field.
 While these two fields are not valid, the checkout button remains disabled, preventing the purchase procedure.
 
+![Screenshot](https://user-images.githubusercontent.com/21969268/233618945-5f666ee2-4ced-420f-98fc-303d1cd44058.png)
